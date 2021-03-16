@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style>
+        ul{
+        	list-style: none;
+        	margin:0;
+        	padding: 0;
+        }
+        img{
+        	vertical-align: middle;
+        	width: 200px;
+        	height: 200px;
+        	padding: 5px 0;
+        }
+        .box{
+        	width:200px;
+        	height: 1200px;
+        	overflow: hidden;
+        	border: 10px solid;
+        	margin:0 auto;
+        	position: relative;
+        }
+        .box .img{
+        	/*display: flex;*/
+        	position: absolute;
+        	/*position: relative;*/
+        	bottom:0;
+        }
+        </style>
+    </head>
+    <body>
+    <div id="box1" class="box">
+    	<ul class="img" style="bottom:0;">
+    		<li><img src="img/1.jpg" alt="1"></li>
+    		<li><img src="img/2.jpg" alt="2"></li>
+    		<li><img src="img/3.jpg" alt="3"></li>
+    		<li><img src="img/4.jpg" alt="4"></li>
+    		<li><img src="img/5.jpg" alt="5"></li>
+    		<li><img src="img/6.jpg" alt="6"></li>
+    	</ul>
+    </div>
+    <script>
+    var box=document.getElementById('box1');
+    var imgs=box.getElementsByClassName('img')[0];    
+    var imgh=200;
+    var imgn=6;
+    var imgl=imgn*imgh;
+    var t=null;
+    var step=1;
+     function move(){
+     	var bottom=parseInt(imgs.style.bottom);
+     	if(bottom==-imgl){
+     		bottom=0;
+     	}
+     	imgs.style.bottom=--bottom+'px';
+    	}
+     imgs.innerHTML+=imgs.innerHTML;
+     box.onmouseover=function(){
+     	clearInterval(t);
+     }
+     imgs.onmouseout=function(){
+     	t=setInterval(move,step);
+     }
+     imgs.onmouseout();
+    </script>	
+    </body>
+</html>
